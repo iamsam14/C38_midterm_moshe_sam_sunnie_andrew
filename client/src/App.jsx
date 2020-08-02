@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { AppContextProvider } from './context/AppContext';
-import ContextDemo from './components/ContextDemo';
-
+import React, { useState, useEffect, Component } from 'react';
+// import { AppContextProvider } from './context/AppContext';
+// import ContextDemo from './components/ContextDemo';
 import './App.css';
+import Flashcards from './components/Flashcards/Flashcards';
 
 const App = () => {
   const [serverMessage, setServerMessage] = useState('');
@@ -15,15 +15,7 @@ const App = () => {
 
   useEffect(fetchDemoData, []);
 
-  return (
-    <AppContextProvider>
-      <div id="demo">
-        <h3>Hello from client/src/App.js</h3>
-        <ContextDemo />
-        <h3>{serverMessage}</h3>
-      </div>
-    </AppContextProvider>
-  );
+  return <Flashcards />;
 };
 
 export default App;

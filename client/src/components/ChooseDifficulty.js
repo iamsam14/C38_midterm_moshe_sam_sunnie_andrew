@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const ChooseDifficulty = () => {
+export default function ChooseDifficulty ({difficulty, setDifficulty}) {
     return (
                 <div className='form-group'>
                     <label htmlFor='difficulty'>Difficulty
-                        <select id='difficulty'>
+                        <select id='difficulty' onChange={(e) => {setDifficulty(e.target.value)}}>
                             <option value=''>Any difficulty</option>
                             <option value='easy'>Easy</option>
                             <option value='medium'>Medium</option>

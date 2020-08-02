@@ -2,32 +2,20 @@ import React, { useState, useEffect } from 'react';
 import FlashCardList from './FlashCardList';
 import axios from 'axios';
 import ChooseCategory from './ChooseCategory';
-import { ChooseDifficulty } from './ChooseDifficulty';
-import {ChooseType} from './ChooseType';
-import {AmountOfQuestions} from './AmountOfQuestions';
+import ChooseDifficulty from './ChooseDifficulty';
+import ChooseType from './ChooseType';
+import AmountOfQuestions from './AmountOfQuestions';
 
 const GetTriviaStuff = () => {
     const [flashcards, setFlashcards] = useState([])
+    const [amount, setAmount] = useState(10)
+    const [difficulty, setDifficulty] = useState('')
+    const [type, setType] = useState('')
+
         
     //gets trivia & maps questions and answers
      useEffect(() => {
-       axios
-       .get('https://opentdb.com/api.php?amount=10&category=&difficulty=&type=&encode=')
-       .then(res => {
-        setFlashcards(res.data.results.map((questionItem, index) => {
-          const answer = decodeString(questionItem.correct_answer)
-          const options = [
-            ...questionItem.incorrect_answers.map(a => decodeString(a)), 
-            answer
-          ]
-          return {
-            id: `${index}-${Date.now()}`,
-            question: decodeString(questionItem.question),
-            answer: answer, 
-            options: options.sort(() => Math.random() - .5)
-          }
-        }))
-      })
+      
      }, [])
 
     //fixes text
@@ -40,15 +28,35 @@ const GetTriviaStuff = () => {
      //
      function handleSubmit(event) {
         event.preventDefault();
+        axios
+        .get(`https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}`)
+        .then(res => {
+          console.log(res)
+
+         setFlashcards(res.data.results.map((questionItem, index) => {
+           const answer = decodeString(questionItem.correct_answer)
+           const options = [
+             ...questionItem.incorrect_answers.map(a => decodeString(a)), 
+             answer
+           ]
+           
+           return {
+             id: `${index}-${Date.now()}`,
+             question: decodeString(questionItem.question),
+             answer: answer, 
+             options: options.sort(() => Math.random() - .5)
+           }
+         }))
+       })
       }
-    
+
       return (
         <>
         <form className='header' onSubmit={handleSubmit}>
        <ChooseCategory/>
-       <ChooseDifficulty/>
-       <ChooseType/>
-       {/* <AmountOfQuestions/> */}
+       <ChooseDifficulty difficulty={difficulty} setDifficulty={setDifficulty}/>
+       <ChooseType type={type} setType={setType}/>
+       <AmountOfQuestions amount={amount} setAmount={setAmount}/>
        <button className='gamebutton'>Start Game!</button>
        </form>
           <div className='container'>

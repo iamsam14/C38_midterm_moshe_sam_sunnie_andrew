@@ -1,0 +1,42 @@
+#top-scoreboard {
+  background: lightblue;
+  margin: 70px auto;
+  box-shadow: 0 4px 0px #333;
+  border-radius: 15px;
+  display: flex;
+
+  max-width: 1080px;
+  padding-bottom: 0.85em;
+}
+
+#container {
+  background-color: lightgrey;
+}
+
+#players {
+  display: flex;
+  padding: 1rem;
+}
+
+#user {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 20px;
+}
+#top-score {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+#top-scoreboard,
+h3 {
+  display: flex;
+  padding: 1rem;
+  margin: auto;
+}
+
+.top-players {
+  padding: 0px 10px;
+  margin: auto;
+}

@@ -1,11 +1,11 @@
 import React from 'react';
-import Flashcards from './Flashcards';
+import Flashcard from './Flashcard';
 
 const FlashcardList = ({ flashcards }) => {
   return (
     <div className="card-stack">
       {flashcards.map((flashcard) => {
-        return <Flashcards flashcard={flashcard} key={flashcard.id} />;
+        return <Flashcard flashcard={flashcard} key={flashcard.id} />;
       })}
     </div>
   );

@@ -19,20 +19,21 @@ const sampleFlashcards = [
     id: 1,
     question: 'What is 2 + 2?',
     correct_answer: '4',
-    incorrect_answers: ['3', '5', '6']
+    answers: ['3', '4', '5', '6']
   },
   {
     id: 2,
     question: 'What color is the sky?',
     correct_answer: 'blue',
-    incorrect_answers: ['yellow', 'greem', 'red']
+    answers: ['yellow', 'blue', 'greem', 'red']
   },
   {
     id: 3,
     question:
       'What did Ross say to Rachel after sleeping with the girl from the copy place?',
     correct_answer: 'We were on a BREAK!',
-    incorrect_answers: [
+    answers: [
+      'We were on a BREAK!',
       "I didn't do it!",
       'SHE came onto ME!',
       'Yeah, well, so did you!'

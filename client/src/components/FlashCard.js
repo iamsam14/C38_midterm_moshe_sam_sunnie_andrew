@@ -30,7 +30,7 @@ export default function FlashCard({flashcard}) {
             <div className='front' >
                 {flashcard.question}
             <div className='flashcard-options'>
-               {flashcard.options.map((option, index) => {
+               {flashcard.options.map((option) => {
                    
                    return   <button 
                             className={`flashcard-option ${ option === flashcard.answer ? 'true' : 'false'}`} 

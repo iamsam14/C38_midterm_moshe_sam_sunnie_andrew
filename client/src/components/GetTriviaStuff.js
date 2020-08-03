@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import FlashCardList from './FlashCardList';
 import axios from 'axios';
 import ChooseCategory from './ChooseCategory';
@@ -11,14 +11,14 @@ const GetTriviaStuff = () => {
     const [amount, setAmount] = useState(10)
     const [difficulty, setDifficulty] = useState('')
     const [type, setType] = useState('')
+    const [categories, setCategories] = useState([])
+    const [category, setCategory] = useState('')
+    const [rightAnswer, setRightAnswer] = useState('')
+    const [triviaQuestion, settriviaQuestion] = useState('')
+    const [loading, setloading] = useState(false)
+    const [currentQuestion, setcurrentQuestion] = useState(1)
+    const [questionsPerPage, setquestionsPerPage] = useState(1)
 
-        
-    //gets trivia & maps questions and answers
-     useEffect(() => {
-      
-     }, [])
-
-    //fixes text
      function decodeString(str) {
        const textArea = document.createElement('textarea');
        textArea.innerHTML = str;
@@ -28,10 +28,11 @@ const GetTriviaStuff = () => {
      //
      function handleSubmit(event) {
         event.preventDefault();
+        setloading(true)
         axios
-        .get(`https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}`)
+        .get(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`)
         .then(res => {
-          console.log(res)
+          setRightAnswer(res.data.results.correct_answer)
 
          setFlashcards(res.data.results.map((questionItem, index) => {
            const answer = decodeString(questionItem.correct_answer)
@@ -53,7 +54,7 @@ const GetTriviaStuff = () => {
       return (
         <>
         <form className='header' onSubmit={handleSubmit}>
-       <ChooseCategory/>
+       <ChooseCategory categories={categories} setCategories={setCategories} category={category} setCategory={setCategory}/>
        <ChooseDifficulty difficulty={difficulty} setDifficulty={setDifficulty}/>
        <ChooseType type={type} setType={setType}/>
        <AmountOfQuestions amount={amount} setAmount={setAmount}/>

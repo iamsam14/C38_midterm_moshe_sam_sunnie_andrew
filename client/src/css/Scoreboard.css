@@ -1,42 +1,28 @@
 #top-scoreboard {
-  background: lightblue;
+  background: rgb(10, 85, 110);
   margin: 70px auto;
-  box-shadow: 0 4px 0px #333;
+  box-shadow: 0 7px 0px #333;
   border-radius: 15px;
   display: flex;
+  padding: 1rem;
+  color: yellow;
+  flex-direction: column;
 
-  max-width: 1080px;
+  max-width: 80%;
   padding-bottom: 0.85em;
 }
 
 #container {
   background-color: lightgrey;
-}
-
-#players {
   display: flex;
-  padding: 1rem;
-}
-
-#user {
-  padding: 1rem;
-  background-color: white;
-  border-radius: 20px;
-}
-#top-score {
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   margin: auto;
 }
 
-#top-scoreboard,
-h3 {
-  display: flex;
-  padding: 1rem;
-  margin: auto;
+#top-five {
+  padding: 0.6rem;
 }
 
-.top-players {
-  padding: 0px 10px;
-  margin: auto;
+.eachPlayerBlock {
+  padding: 5px;
 }

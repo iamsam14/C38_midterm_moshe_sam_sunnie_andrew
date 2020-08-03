@@ -12,7 +12,7 @@ const AddPlayerForm = () => {
   };
 
   return (
-    <div>
+    <div id="new-players-wrap">
       <div id="players">
         {players.map((user) => {
           return (

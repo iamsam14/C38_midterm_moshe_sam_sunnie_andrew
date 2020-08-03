@@ -3,9 +3,9 @@ import Scoreboard from './components/Scoreboard';
 // import AddPlayerForm from './components/AddPlayerForm';
 
 import './css/Scoreboard.css';
+import Timer from './components/Timer';
 import AddPlayerForm from './components/AddPlayerForm';
 //import Timer from './components/CountdownTimer';
-import TopFive from './components/TopFive';
 
 const App = () => {
   return (
@@ -13,6 +13,7 @@ const App = () => {
       <Scoreboard />
 
       <AddPlayerForm />
+      <Timer />
     </div>
   );
 };

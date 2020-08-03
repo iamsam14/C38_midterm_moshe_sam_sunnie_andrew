@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 // import './Flashcard.css';
+
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 const Flashcard = ({ flashcard }) => {
@@ -16,7 +17,7 @@ const Flashcard = ({ flashcard }) => {
       <Card.Body className="front">
         <Card.Text>{flashcard.question}</Card.Text>
         <ListGroup className="flashcard-answers">
-          {flashcard.answers.map((answer) => {
+          {flashcard.options.map((answer) => {
             return (
               <ListGroupItem bg="info" className="flashcard-answer">
                 {answer}

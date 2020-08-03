@@ -1,17 +1,15 @@
 import React from 'react';
 import Scoreboard from './components/Scoreboard';
-// import AddPlayerForm from './components/AddPlayerForm';
-
-import './css/Scoreboard.css';
 import Timer from './components/Timer';
 import AddPlayerForm from './components/AddPlayerForm';
-//import Timer from './components/CountdownTimer';
+import GetTriviaStuff from './components/GetTriviaStuff';
+import './css/Scoreboard.css';
 
 const App = () => {
   return (
     <div id="container">
       <Scoreboard />
-
+      <GetTriviaStuff />
       <AddPlayerForm />
       <Timer />
     </div>

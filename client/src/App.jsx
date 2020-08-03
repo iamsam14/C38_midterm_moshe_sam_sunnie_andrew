@@ -25,7 +25,7 @@ const sampleFlashcards = [
     id: 2,
     question: 'What color is the sky?',
     correct_answer: 'blue',
-    answers: ['yellow', 'blue', 'greem', 'red']
+    answers: ['yellow', 'blue', 'green', 'red']
   },
   {
     id: 3,

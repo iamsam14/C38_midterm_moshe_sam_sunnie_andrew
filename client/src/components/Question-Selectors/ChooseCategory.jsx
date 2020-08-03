@@ -1,8 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import axios from 'axios'
 
-export default function ChooseCategory() {
-    const [categories, setCategories] = useState([])
+export default function ChooseCategory({categories, setCategories, setCategory}) {
     
      const categoryEl = useRef()
     
@@ -17,7 +16,7 @@ export default function ChooseCategory() {
     return (
           <div className='form-group'>
             <label htmlFor='category'>Category</label>
-            <select id='category' ref={categoryEl}>
+            <select id='category' ref={categoryEl} onChange={(e) => {setCategory(e.target.value)}}>
                 <option>Any category</option>
               { categories.map(category => {
                 return <option value={category.id} key={category.id}>{category.name}</option>})}

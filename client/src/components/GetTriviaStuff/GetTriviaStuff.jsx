@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FlashCardList from '../Flashcards/FlashcardList';
+import FlashcardList from '../Flashcards/FlashcardList';
 import axios from 'axios';
 import ChooseCategory from '../Question-Selectors/ChooseCategory';
 import ChooseDifficulty from './../Question-Selectors/ChooseDifficulty';
@@ -15,7 +15,9 @@ const GetTriviaStuff = () => {
   //gets trivia & maps questions and answers
   useEffect(() => {}, []);
 
-  //fixes text
+  /**
+   * FIXES STRING FORMATTING
+   */
   function decodeString(str) {
     const textArea = document.createElement('textarea');
     textArea.innerHTML = str;
@@ -64,7 +66,7 @@ const GetTriviaStuff = () => {
         <button className="gamebutton">Start Game!</button>
       </form>
       <div className="container">
-        <FlashCardList flashcards={flashcards} />
+        <FlashcardList flashcards={flashcards} />
       </div>
     </>
   );

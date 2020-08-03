@@ -1,0 +1,15 @@
+#user {
+  display: flex;
+  padding: 1rem;
+  background-color: red;
+  margin: 20px;
+  align-content: center;
+}
+
+form {
+  background-color: blue;
+}
+
+#new-players-wrap {
+  display: flex;
+}

@@ -10,7 +10,13 @@ const GetTriviaStuff = () => {
   const [flashcards, setFlashcards] = useState([]);
   const [amount, setAmount] = useState(10);
   const [difficulty, setDifficulty] = useState('');
-  const [type, setType] = useState('');
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState('');
+  const [rightAnswer, setRightAnswer] = useState('');
+  const [triviaQuestion, settriviaQuestion] = useState('');
+  const [loading, setloading] = useState(false);
+  const [currentQuestion, setcurrentQuestion] = useState(1);
+  const [questionsPerPage, setquestionsPerPage] = useState(1);
 
   //gets trivia & maps questions and answers
   useEffect(() => {}, []);
@@ -29,7 +35,7 @@ const GetTriviaStuff = () => {
     event.preventDefault();
     axios
       .get(
-        `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}`
+        `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`
       )
       .then((res) => {
         console.log(res);
@@ -56,12 +62,16 @@ const GetTriviaStuff = () => {
   return (
     <>
       <form className="header" onSubmit={handleSubmit}>
-        <ChooseCategory />
+        <ChooseCategory
+          categories={categories}
+          setCategories={setCategories}
+          category={category}
+          setCategory={setCategory}
+        />
         <ChooseDifficulty
           difficulty={difficulty}
           setDifficulty={setDifficulty}
         />
-        {/* <ChooseType type={type} setType={setType}/> */}
         <AmountOfQuestions amount={amount} setAmount={setAmount} />
         <button className="gamebutton">Start Game!</button>
       </form>

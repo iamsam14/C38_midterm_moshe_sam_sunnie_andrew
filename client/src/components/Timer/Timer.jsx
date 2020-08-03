@@ -1,17 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './TimerDisplay.css';
 
-// const Timer = () => {
-//   const [seconds, setSeconds] = useState(0);
-//   const [whenPlaying, showSeconds] = useState(true);
-//   // Seconds increments....
-//   //   useEffect(() => {
-//   //     setInterval(() => {
-//   //       setSeconds((seconds) => seconds + 1);
-//   //     }, 1000);
-//   //   }, []);
-//   return (
-
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -54,3 +43,13 @@ const Timer = () => {
 };
 
 export default Timer;
+
+// const Timer = () => {
+//   const [seconds, setSeconds] = useState(0);
+//   const [whenPlaying, showSeconds] = useState(true);
+//   Seconds increments....
+//     useEffect(() => {
+//       setInterval(() => {
+//         setSeconds((seconds) => seconds + 1);
+//       }, 1000);
+//     }, []);

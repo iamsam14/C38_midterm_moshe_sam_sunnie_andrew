@@ -10,16 +10,21 @@ const Flashcard = ({ flashcard }) => {
   return (
     <Card
       bg="info"
-      text="dark"
+      text="light"
       className={`card ${flip ? 'flip' : ''}`}
       onClick={() => setFlip(!flip)}
     >
       <Card.Body className="front">
         <Card.Text>{flashcard.question}</Card.Text>
-        <ListGroup className="flashcard-answers">
+        <ListGroup text="white" className="flashcard-answers">
           {flashcard.options.map((answer) => {
             return (
-              <ListGroupItem bg="info" className="flashcard-answer">
+              <ListGroupItem
+                variant="info"
+                text="white"
+                className="flashcard-answer"
+                style={{ color: '11808e' }}
+              >
                 {answer}
               </ListGroupItem>
             );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Newplayer from '../css/Newplayer.css';
+
 const NewPlayer = ({ addPlayer }) => {
   const [name, setPlayer] = useState('');
   const handleSubmit = (e) => {

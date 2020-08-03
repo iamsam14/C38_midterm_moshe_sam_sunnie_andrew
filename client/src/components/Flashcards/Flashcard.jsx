@@ -9,7 +9,7 @@ const Flashcard = ({ flashcard }) => {
   return (
     <Card
       bg="info"
-      text="white"
+      text="dark"
       className={`card ${flip ? 'flip' : ''}`}
       onClick={() => setFlip(!flip)}
     >

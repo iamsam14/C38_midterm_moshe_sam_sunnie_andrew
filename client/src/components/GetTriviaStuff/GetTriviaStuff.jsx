@@ -3,17 +3,14 @@ import FlashcardList from '../Flashcards/FlashcardList';
 import axios from 'axios';
 import ChooseCategory from '../Question-Selectors/ChooseCategory';
 import ChooseDifficulty from './../Question-Selectors/ChooseDifficulty';
-import ChooseType from '../Question-Selectors/ChooseType';
 import AmountOfQuestions from '../Question-Selectors/AmountOfQuestions';
 
 const GetTriviaStuff = () => {
   const [flashcards, setFlashcards] = useState([]);
   const [amount, setAmount] = useState(10);
   const [difficulty, setDifficulty] = useState('');
-  const [type, setType] = useState('');
-
-  //gets trivia & maps questions and answers
-  useEffect(() => {}, []);
+  const [categories, setCategories] = useState([])
+  const [category, setCategory] = useState('')
 
   /**
    * FIXES STRING FORMATTING
@@ -24,12 +21,12 @@ const GetTriviaStuff = () => {
     return textArea.value;
   }
 
-  //
+  //gets trivia & maps questions and answers
   function handleSubmit(event) {
     event.preventDefault();
     axios
       .get(
-        `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}`
+        `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`
       )
       .then((res) => {
         console.log(res);
@@ -56,12 +53,11 @@ const GetTriviaStuff = () => {
   return (
     <>
       <form className="header" onSubmit={handleSubmit}>
-        <ChooseCategory />
+        <ChooseCategory categories={categories} setCategories={setCategories} setCategory={setCategory}/>
         <ChooseDifficulty
           difficulty={difficulty}
           setDifficulty={setDifficulty}
         />
-        {/* <ChooseType type={type} setType={setType}/> */}
         <AmountOfQuestions amount={amount} setAmount={setAmount} />
         <button className="gamebutton">Start Game!</button>
       </form>

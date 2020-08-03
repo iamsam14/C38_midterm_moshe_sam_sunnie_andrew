@@ -1,0 +1,17 @@
+#timerwrap {
+  background-color: rgb(64, 4, 99);
+
+  width: 100px;
+  height: 100px;
+  margin-left: 45%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+}

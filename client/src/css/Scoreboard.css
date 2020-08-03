@@ -1,0 +1,28 @@
+#top-scoreboard {
+  background: rgb(10, 85, 110);
+  margin: 70px auto;
+  box-shadow: 0 7px 0px #333;
+  border-radius: 15px;
+  display: flex;
+  padding: 1rem;
+  color: yellow;
+  flex-direction: column;
+
+  max-width: 80%;
+  padding-bottom: 0.85em;
+}
+
+#container {
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+#top-five {
+  padding: 0.6rem;
+}
+
+.eachPlayerBlock {
+  padding: 5px;
+}

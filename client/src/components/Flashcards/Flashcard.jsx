@@ -32,3 +32,8 @@ const Flashcard = ({ flashcard }) => {
 };
 
 export default Flashcard;
+
+// className={`flashcard-option ${ option === flashcard.answer ? 'true' : 'false'}`}
+// key={option}
+// onClick={() => setFlip(!flip) }>
+//     {option}

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Avatar from '../download.jpeg';
 import TopFive from './TopFive';
 
 const Scoreboard = () => {

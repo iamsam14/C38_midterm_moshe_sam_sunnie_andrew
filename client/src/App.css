@@ -7,3 +7,17 @@
   justify-content: space-around;
   align-items: center;
 } */
+
+/* h1 {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: bounce;
+  animation-duration: 2s;
+} */
+
+* {
+  background-image: url(./components/img/img/ribbon.png);
+  background-position: center;
+  background-repeat: repeat;
+}

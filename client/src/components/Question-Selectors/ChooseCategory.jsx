@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
-const ChooseCategory = ({
+export default function ChooseCategory({
   categories,
-  category,
   setCategories,
   setCategory
-}) => {
+}) {
   const categoryEl = useRef();
 
   useEffect(() => {
@@ -36,6 +35,4 @@ const ChooseCategory = ({
       </select>
     </div>
   );
-};
-
-export default ChooseCategory;
+}

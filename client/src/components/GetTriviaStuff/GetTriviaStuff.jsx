@@ -3,7 +3,6 @@ import FlashcardList from '../Flashcards/FlashcardList';
 import axios from 'axios';
 import ChooseCategory from '../Question-Selectors/ChooseCategory';
 import ChooseDifficulty from './../Question-Selectors/ChooseDifficulty';
-import ChooseType from '../Question-Selectors/ChooseType';
 import AmountOfQuestions from '../Question-Selectors/AmountOfQuestions';
 
 const GetTriviaStuff = () => {
@@ -12,14 +11,6 @@ const GetTriviaStuff = () => {
   const [difficulty, setDifficulty] = useState('');
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState('');
-  const [rightAnswer, setRightAnswer] = useState('');
-  const [triviaQuestion, settriviaQuestion] = useState('');
-  const [loading, setloading] = useState(false);
-  const [currentQuestion, setcurrentQuestion] = useState(1);
-  const [questionsPerPage, setquestionsPerPage] = useState(1);
-
-  //gets trivia & maps questions and answers
-  useEffect(() => {}, []);
 
   /**
    * FIXES STRING FORMATTING
@@ -30,12 +21,12 @@ const GetTriviaStuff = () => {
     return textArea.value;
   }
 
-  //
+  //gets trivia & maps questions and answers
   function handleSubmit(event) {
     event.preventDefault();
     axios
       .get(
-        `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`
+        `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`
       )
       .then((res) => {
         console.log(res);

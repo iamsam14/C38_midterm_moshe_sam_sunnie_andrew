@@ -15,7 +15,7 @@ export default function ChooseCategory({
   }, []);
 
   return (
-    <div className="form-group">
+    <div>
       <label htmlFor="category">Category</label>
       <select
         id="category"

@@ -88,6 +88,10 @@ const GetTriviaStuff = () => {
         <ChooseCategory
           categories={categories}
           setCategories={setCategories}
+<<<<<<< HEAD
+          category={category}
+=======
+>>>>>>> master
           setCategory={setCategory}
         />
         <ChooseDifficulty

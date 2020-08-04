@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './TimerDisplay.css';
 
 const Timer = () => {
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(20);
   const [isActive, setIsActive] = useState(false);
 
   function toggle() {
@@ -10,7 +10,7 @@ const Timer = () => {
   }
 
   function reset() {
-    setSeconds(0);
+    setSeconds(20);
     setIsActive(false);
   }
 
@@ -18,7 +18,7 @@ const Timer = () => {
     let interval = null;
     if (isActive) {
       interval = setInterval(() => {
-        setSeconds((seconds) => seconds + 1);
+        setSeconds((seconds) => seconds - 1);
       }, 1000);
     } else if (!isActive && seconds !== 0) {
       clearInterval(interval);
@@ -30,7 +30,7 @@ const Timer = () => {
     <div id="timerwrap">
       <div className="time">{seconds}</div>
       <button
-        className={`button-primary-${isActive ? 'active' : 'inactive'}`}
+        className={`first-button${isActive ? 'active' : 'inactive'}`}
         onClick={toggle}
       >
         {isActive ? 'Pause' : 'Start'}
@@ -43,13 +43,3 @@ const Timer = () => {
 };
 
 export default Timer;
-
-// const Timer = () => {
-//   const [seconds, setSeconds] = useState(0);
-//   const [whenPlaying, showSeconds] = useState(true);
-//   Seconds increments....
-//     useEffect(() => {
-//       setInterval(() => {
-//         setSeconds((seconds) => seconds + 1);
-//       }, 1000);
-//     }, []);

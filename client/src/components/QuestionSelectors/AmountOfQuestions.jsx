@@ -1,9 +1,14 @@
 import React, { useRef } from 'react';
-export default function AmountOfQuestions({ amount, setAmount }) {
+export default function AmountOfQuestions({
+  amount,
+  setAmount,
+  formGroupClass,
+  setFormGroupClass
+}) {
   const amountEl = useRef();
 
   return (
-    <div className="form-group">
+    <div className={formGroupClass ? 'none' : 'form-group'}>
       <label htmlFor="amount">
         Amount of questions
         <input

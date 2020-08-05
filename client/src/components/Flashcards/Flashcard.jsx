@@ -15,7 +15,7 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
     const isAnswerCorrect = answer === flashcard.answer;
     setIsCorrect(isAnswerCorrect);
   };
-
+console.log(flashcard)
   return (
     <Card bg="info" text="dark" className={`card ${flipped ? 'flip' : ''}`}>
       <Card.Body className={flipped ? 'back' : 'front'}>
@@ -23,7 +23,7 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
           <div>
             <h1>This is the answer {flashcard.answer}</h1>
             <button onClick={() => handleNextCard(isCorrect)}>
-              Next Question!
+              {flashcard.next === null ? 'See your score!!' : 'Next Question'}
             </button>
           </div>
         ) : (
@@ -33,6 +33,7 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
               {flashcard.options.map((answer) => {
                 return (
                   <ListGroupItem
+                   key={flashcard.id += 1}
                     bg="info"
                     className="flashcard-answer"
                     onClick={() => handleRevealAnswer(answer)}

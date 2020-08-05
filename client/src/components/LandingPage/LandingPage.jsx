@@ -1,15 +1,20 @@
 import React from 'react';
-import 'animate.css';
+// import 'animate.css';
+import {Link} from 'react-router-dom'
 import './ribbon.png';
 
 const LandingPage = () => {
   return (
+    <>
     <h1 className="animate__animated animate__bounce">
       Infinite Fortress Trivia
     </h1>
+    <div>
+    <Link to='/select'>
+    <button>Let's setup your game!</button>
+    </Link>
+    </div>
+    </>
   );
 };
 export default LandingPage;
-// function App() {
-//   return <div style={{ backgroundImage: `url(${ribbion})` }} />;
-// }

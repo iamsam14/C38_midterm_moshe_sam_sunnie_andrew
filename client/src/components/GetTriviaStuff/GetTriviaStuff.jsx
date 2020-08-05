@@ -4,6 +4,7 @@ import Flashcard from '../Flashcards/Flashcard';
 import ChooseCategory from '../Question-Selectors/ChooseCategory';
 import ChooseDifficulty from './../Question-Selectors/ChooseDifficulty';
 import AmountOfQuestions from '../Question-Selectors/AmountOfQuestions';
+import {useHistory} from 'react-router-dom'
 
 const GetTriviaStuff = () => {
   const [cardMap, setCardMap] = useState({});
@@ -13,6 +14,8 @@ const GetTriviaStuff = () => {
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState('');
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
+  let history = useHistory();
 
   // if you want to know how many are wrong
   // const wrongAnswers = Object.keys(cardMap).length - correctAnswerCount;
@@ -24,7 +27,7 @@ const GetTriviaStuff = () => {
     if (currentCard.next) {
       setCurrentCard(cardMap[currentCard.next]);
     } else {
-      console.log('i am at the last question do something to me');
+      history.push('/scoreboard')
       // do something for the final card
       // maybe re-direct to some other page
     }
@@ -38,7 +41,7 @@ const GetTriviaStuff = () => {
     textArea.innerHTML = str;
     return textArea.value;
   };
-
+let isLastCard;
   //gets trivia & maps questions and answers
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -65,9 +68,8 @@ const GetTriviaStuff = () => {
         });
 
         const parsedCards = cards.reduce((acc, card, index) => {
-          const isLastCard = index === cards.length - 1;
+          isLastCard = index === cards.length - 1;
           const next = isLastCard ? null : cards[index + 1].id;
-
           acc[card.id] = {
             ...card,
             next
@@ -80,10 +82,13 @@ const GetTriviaStuff = () => {
         setCurrentCard(parsedCards[firstCard.id]);
         setCardMap(parsedCards);
       });
+      
+      setIsClicked(true)
   };
 
   return (
     <>
+    {!isClicked ? <div className='getridofme'>
       <form className="header" onSubmit={handleSubmit}>
         <ChooseCategory
           categories={categories}
@@ -97,6 +102,9 @@ const GetTriviaStuff = () => {
         <AmountOfQuestions amount={amount} setAmount={setAmount} />
         <button className="gamebutton">Start Game!</button>
       </form>
+      </div> : null}
+    
+
       <div className="container">
         <div className="card-stack">
           {currentCard && (

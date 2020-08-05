@@ -1,5 +1,5 @@
 import React from 'react';
-import 'animate.css';
+// import 'animate.css';
 import './ribbon.png';
 
 const LandingPage = () => {

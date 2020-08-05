@@ -102,6 +102,7 @@ const GetTrivia = ({ remainingTime }) => {
               setCategories={setCategories}
               setCategory={setCategory}
             />
+            console.log(remainingTime)
             <ChooseDifficulty
               difficulty={difficulty}
               setDifficulty={setDifficulty}
@@ -111,11 +112,11 @@ const GetTrivia = ({ remainingTime }) => {
           </form>
         </div>
       ) : null}
-
       <div className="container">
         <div className="card-stack">
           {currentCard && (
             <Flashcard
+              remainingTime={remainingTime}
               key={currentCard.id}
               flashcard={currentCard}
               handleNextCard={handleNextCard}

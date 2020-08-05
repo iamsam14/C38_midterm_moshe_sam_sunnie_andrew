@@ -6,12 +6,14 @@ import ProgressBar from '../Timer/ProgressBar';
 
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-const Flashcard = ({ flashcard, handleNextCard }) => {
+const Flashcard = ({ flashcard, handleNextCard, remainingTime }) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [flipped, setFlipped] = useState(false);
 
   const handleRevealAnswer = (answer) => {
     // Stop the timer and store the remaining second value
+    // process.kill(remainingTime);
+    console.log(remainingTime);
     if (!flipped) {
       setFlipped(true);
     }

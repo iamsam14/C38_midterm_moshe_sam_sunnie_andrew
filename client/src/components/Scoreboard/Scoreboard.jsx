@@ -1,13 +1,13 @@
 import React from 'react';
 import TopFive from './TopFive';
 import ProgressBar from '../Timer/ProgressBar';
-
-const Scoreboard = () => {
+import score from '../GetTriviaStuff/GetTriviaStuff';
+const Scoreboard = ({ score }) => {
   return (
     <div>
       <div id="top-scoreboard">
-        <ProgressBar />
-        <h1>The TOP 5 PLAYERS!</h1>
+        <h3>Your Score is {score}</h3>
+        <h1>Scoreboard Goes Here</h1>
         <div id="row"></div>
       </div>
     </div>

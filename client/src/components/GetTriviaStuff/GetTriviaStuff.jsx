@@ -4,21 +4,20 @@ import Flashcard from '../Flashcards/Flashcard';
 import ChooseCategory from '../Question-Selectors/ChooseCategory';
 import ChooseDifficulty from './../Question-Selectors/ChooseDifficulty';
 import AmountOfQuestions from '../Question-Selectors/AmountOfQuestions';
-import {useHistory} from 'react-router-dom'
+import ProgressBar from '../Timer/ProgressBar';
+import { useHistory } from 'react-router-dom';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
-const GetTriviaStuff = () => {
+const GetTriviaStuff = ({ remainingTime }) => {
   const [cardMap, setCardMap] = useState({});
   const [currentCard, setCurrentCard] = useState(null);
   const [amount, setAmount] = useState(10);
-  const [difficulty, setDifficulty] = useState('');
+  const [difficulty, setDifficulty] = useState('easy');
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState('');
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
   let history = useHistory();
-
-  // if you want to know how many are wrong
-  // const wrongAnswers = Object.keys(cardMap).length - correctAnswerCount;
 
   const handleNextCard = (isCorrect) => {
     if (isCorrect) {
@@ -27,22 +26,28 @@ const GetTriviaStuff = () => {
     if (currentCard.next) {
       setCurrentCard(cardMap[currentCard.next]);
     } else {
-      history.push('/scoreboard')
-      // do something for the final card
-      // maybe re-direct to some other page
+      const getScore = (correctAnswerCount, difficulty) => {
+        console.log('the diff is: ', difficulty);
+        let diffCoefficient = 0.6;
+        if (difficulty === 'hard') diffCoefficient = 2;
+        if (difficulty === 'medium') diffCoefficient = 1.2;
+        const score = Math.round(
+          152.75 * diffCoefficient * correctAnswerCount * 40
+        );
+        console.log('the score is', score);
+        return score;
+      };
+      history.push('/scoreboard');
     }
   };
 
-  /**
-   * FIXES STRING FORMATTING
-   */
   const decodeString = (str) => {
     const textArea = document.createElement('textarea');
     textArea.innerHTML = str;
     return textArea.value;
   };
-let isLastCard;
-  //gets trivia & maps questions and answers
+
+  let isLastCard;
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -82,28 +87,29 @@ let isLastCard;
         setCurrentCard(parsedCards[firstCard.id]);
         setCardMap(parsedCards);
       });
-      
-      setIsClicked(true)
+
+    setIsClicked(true);
   };
 
   return (
     <>
-    {!isClicked ? <div className='getridofme'>
-      <form className="header" onSubmit={handleSubmit}>
-        <ChooseCategory
-          categories={categories}
-          setCategories={setCategories}
-          setCategory={setCategory}
-        />
-        <ChooseDifficulty
-          difficulty={difficulty}
-          setDifficulty={setDifficulty}
-        />
-        <AmountOfQuestions amount={amount} setAmount={setAmount} />
-        <button className="gamebutton">Start Game!</button>
-      </form>
-      </div> : null}
-    
+      {!isClicked ? (
+        <div className="getridofme">
+          <form className="header" onSubmit={handleSubmit}>
+            <ChooseCategory
+              categories={categories}
+              setCategories={setCategories}
+              setCategory={setCategory}
+            />
+            <ChooseDifficulty
+              difficulty={difficulty}
+              setDifficulty={setDifficulty}
+            />
+            <AmountOfQuestions amount={amount} setAmount={setAmount} />
+            <button className="gamebutton">Start Game!</button>
+          </form>
+        </div>
+      ) : null}
 
       <div className="container">
         <div className="card-stack">

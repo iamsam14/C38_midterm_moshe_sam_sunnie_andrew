@@ -1,151 +1,180 @@
-import React from 'react';
-
-const PLAYERS = [
-  {
-    name: 'Andrew',
-    score: 22,
-    id: 1
-  },
-  {
-    name: 'Moshe',
-    score: 31,
-    id: 2
-  },
-  {
-    name: 'Sam',
-    score: 2,
-    id: 3
-  },
-  {
-    name: 'Sunnie',
-    score: 17,
-    id: 4
-  },
-  {
-    name: 'Ernie',
-    score: 10,
-    id: 5
-  }
-];
-
-let nextId = 6;
-
-// add new player
-const AddPlayerForm = () => {};
-//
-const firstState = () => {
-  return {
-    name: ''
-  };
-};
-
-// event name value for input
-const onNameChange = (e) => {
-  this.setState({ name: e.target.value });
-};
-
-//click for add player
-let onSubmit = (e) => {
-  e.preventDefault();
-  // onAdd(this.state.name);
-  // setState({ name: '' });
-};
-//renders the above
-const BuildUserForm = () => {
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+let nextId = 4;
+function Stats(props) {
+  let totalPlayers = props.players.length;
+  let totalPoints = props.players.reduce((acc, next) => (acc += next.score), 0);
   return (
-    <div className="additional-player">
+    <table className="stats">
+      <tbody>
+        <tr>
+          <td>Players:</td>
+          <td>{totalPlayers}</td>
+        </tr>
+        <tr>
+          <td>Total Points:</td>
+          <td>{totalPoints}</td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
+const Stopwatch = (props) => {
+  const [timerRunning, setTimerRunning] = useState(false);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const [previousTime, setPreviousTime] = useState(0);
+  const [intervals, setIntervals] = useState();
+  let seconds = Math.floor(elapsedTime / 1000);
+  const componentDidMount = () => {
+    setInterval(onTick, 100);
+  };
+  const componentWillUnmount = () => {
+    clearInterval(intervals);
+  };
+  const onStop = () => {
+    setTimerRunning(false);
+  };
+  const onTick = () => {
+    if (timerRunning) {
+      let now = Date.now();
+      setPreviousTime(now);
+      setElapsedTime(elapsedTime + (now - previousTime));
+    }
+  };
+  const onStart = () => {
+    setTimerRunning(true);
+    setPreviousTime(Date.now());
+  };
+  const onReset = () => {
+    setElapsedTime(0);
+    setPreviousTime(Date.now());
+  };
+  return (
+    <div className="stopwatch">
+      <h2>Stopwatch</h2>
+      <div className="stopwatch-time">{seconds}</div>
+      {timerRunning ? (
+        <button onClick={onStop}>Stop</button>
+      ) : (
+        <button onClick={onStart}>Start</button>
+      )}
+      <button onClick={onReset}>Reset</button>
+    </div>
+  );
+};
+const AddPlayerForm = ({ onAdd }) => {
+  const [name, setName] = useState('');
+  const onNameChange = (e) => {
+    setName(e.target.value);
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    onAdd(name);
+    setName('');
+  };
+  return (
+    <div className="add-player-form">
       <form onSubmit={onSubmit}>
-        <input type="text" value={this.state.name} onChange={this.nameChange} />
-        <input type="submit" value="Add player" />
+        <input type="text" value={name} onChange={onNameChange} />
+        <input type="submit" value="Add Player" />
       </form>
     </div>
   );
 };
-//Top div
-const boardTitle = () => {
+Stats.propTypes = {
+  players: PropTypes.array.isRequired
+};
+function Header({ players, title }) {
   return (
-    <div className="board-title">
-      <h1>Trivia Jedi-Master Ranking:</h1>
+    <div className="header">
+      <Stats players={players} />
+      <h1>{title}</h1>
+      <Stopwatch />
     </div>
   );
+}
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  players: PropTypes.array.isRequired
 };
-
-const Player = ({ props }) => {
+function Counter({ onChange, score }) {
+  return (
+    <div className="counter">
+      <button className="counter-action decrement" onClick={() => onChange(-1)}>
+        {' '}
+        -{' '}
+      </button>
+      <div className="counter-score">{score}</div>
+      <button className="counter-action increment" onClick={() => onChange(1)}>
+        {' '}
+        +{' '}
+      </button>
+    </div>
+  );
+}
+Counter.propTypes = {
+  score: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+function Player({ onRemove, name, score, onScoreChange }) {
   return (
     <div className="player">
       <div className="player-name">
-        <a className="remove-user" onClick={props.onRemove}>
-          ✖
+        <a className="remove-player" onClick={onRemove}>
+          ❌
         </a>
-        {props.name}
+        {name}
+      </div>
+      <div className="player-score">
+        <Counter score={score} onChange={onScoreChange} />
       </div>
     </div>
   );
+}
+Player.propTypes = {
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  onScoreChange: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired
 };
-
-// for function using the score
-// <div className="counter-score"> {props.score} </div>
-//
-
-//calling function
-firstState();
-
-//switching back and forth
-// let Player = {
-//   name: '',
-//   score: '',
-//   onScoreChange: ''
-// };
-//player score increase. they move to higher order.
-const onScoreChange = (index, scores) => {
-  let players = [...this.state.players];
-  players[index].score += scores;
-  players = players.sort((a, b) => b.score - a.score);
-  this.setState({ players });
+const Application = (props) => {
+  const [players, setPlayers] = useState([]);
+  function onScoreChange(index, delta) {
+    players[index].score += delta;
+    setPlayers(players);
+  }
+  const onPlayerAdd = (name) => {
+    players.push({
+      name: name,
+      score: 0,
+      id: nextId
+    });
+    setPlayers(players);
+    nextId++;
+    console.log(players);
+  };
+  const onRemovePlayer = (index) => {
+    players.splice(index, 1);
+    setPlayers(players);
+  };
+  return (
+    <div className="scoreboard">
+      <Header title={props.title} players={players} />
+      <div className="players">
+        {players.map((player, index) => {
+          return (
+            <Player
+              onScoreChange={(delta) => onScoreChange(index, delta)}
+              name={player.name}
+              score={player.score}
+              onRemove={() => onRemovePlayer(index)}
+              key={player.id}
+            />
+          );
+        })}
+      </div>
+      <AddPlayerForm onAdd={onPlayerAdd} />
+    </div>
+  );
 };
-
-const onAddPlayer = (name) => {
-  this.state.players.push({
-    name: name,
-    score: 0,
-    id: nextId
-  });
-  this.setState(this.state);
-  nextId += 1;
-};
-
-let onRemovePlayer = (index) => {
-  this.state.players.splice(index, 1);
-  this.setState(this.state);
-};
-
-//reorder render
-// const TopFive = () => {
-//   return (
-//     <div className="scoreboard">
-//       <boardTitle title={this.props.title} players={this.state.players} />
-
-//       <div className="players">
-//         {this.state.players.map(
-//           function (player, index) {
-//             return (
-//               <Player
-//                 onScoreChange={function (delta) {
-//                   this.onScoreChange(index, delta);
-//                 }.bind(this)}
-//                 onRemove={function () {
-//                   this.onRemovePlayer(index);
-//                 }.bind(this)}
-//                 name={player.name}
-//                 score={player.score}
-//                 key={player.id}
-//               />
-//             );
-//           }.bind(this)
-//         )}
-//       </div>
-//       <AddPlayerForm onAdd={this.onPlayerAdd} />
-//     </div>
-//   );
-// };
-export default TopFive;
+export default Application;

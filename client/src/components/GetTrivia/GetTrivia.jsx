@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Flashcard from '../Flashcards/Flashcard';
-import ChooseCategory from '../Question-Selectors/ChooseCategory';
-import ChooseDifficulty from '../Question-Selectors/ChooseDifficulty';
-import AmountOfQuestions from '../Question-Selectors/AmountOfQuestions';
+import ChooseCategory from '../QuestionSelectors/ChooseCategory';
+import ChooseDifficulty from '../QuestionSelectors/ChooseDifficulty';
+import AmountOfQuestions from '../QuestionSelectors/AmountOfQuestions';
 import { useHistory } from 'react-router-dom';
 
-const GetTriviaStuff = ({ remainingTime }) => {
+const GetTrivia = ({ remainingTime }) => {
   const [cardMap, setCardMap] = useState({});
   const [currentCard, setCurrentCard] = useState(null);
   const [amount, setAmount] = useState(10);
@@ -70,6 +70,9 @@ const GetTriviaStuff = ({ remainingTime }) => {
           };
         });
 
+        /**
+         * PAGINATION
+         */
         const parsedCards = cards.reduce((acc, card, index) => {
           isLastCard = index === cards.length - 1;
           const next = isLastCard ? null : cards[index + 1].id;
@@ -124,4 +127,4 @@ const GetTriviaStuff = ({ remainingTime }) => {
   );
 };
 
-export default GetTriviaStuff;
+export default GetTrivia;

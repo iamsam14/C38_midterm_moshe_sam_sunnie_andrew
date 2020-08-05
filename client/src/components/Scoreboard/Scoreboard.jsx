@@ -1,8 +1,7 @@
 import React from 'react';
-import TopFive from './TopFive';
-import ProgressBar from '../Timer/ProgressBar';
-import score from '../GetTriviaStuff/GetTriviaStuff';
-const Scoreboard = ({ score }) => {
+
+const Scoreboard = ({ match }) => {
+  const { score } = match.params;
   return (
     <div>
       <div id="top-scoreboard">

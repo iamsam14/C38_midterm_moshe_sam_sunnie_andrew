@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Flashcard from '../Flashcards/Flashcard';
 import ChooseCategory from '../Question-Selectors/ChooseCategory';
-import ChooseDifficulty from './../Question-Selectors/ChooseDifficulty';
+import ChooseDifficulty from '../Question-Selectors/ChooseDifficulty';
 import AmountOfQuestions from '../Question-Selectors/AmountOfQuestions';
-import ProgressBar from '../Timer/ProgressBar';
 import { useHistory } from 'react-router-dom';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 const GetTriviaStuff = ({ remainingTime }) => {
   const [cardMap, setCardMap] = useState({});
@@ -37,7 +35,7 @@ const GetTriviaStuff = ({ remainingTime }) => {
         console.log('the score is', score);
         return score;
       };
-      history.push('/scoreboard');
+      history.push(`/scoreboard/${getScore(correctAnswerCount, difficulty)}`);
     }
   };
 

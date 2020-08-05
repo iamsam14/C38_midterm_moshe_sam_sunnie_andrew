@@ -18,11 +18,3 @@
   flex-direction: column;
   margin: auto;
 }
-
-#top-five {
-  padding: 0.6rem;
-}
-
-.eachPlayerBlock {
-  padding: 5px;
-}

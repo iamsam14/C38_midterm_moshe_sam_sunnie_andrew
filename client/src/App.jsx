@@ -3,19 +3,24 @@ import Scoreboard from './components/Scoreboard/Scoreboard';
 import Timer from './components/Timer/Timer';
 import AddPlayerForm from './components/NewPlayer/AddPlayerForm';
 import GetTriviaStuff from './components/GetTriviaStuff/GetTriviaStuff';
-import Flashcardlist from './components/Flashcards/FlashcardList';
 import LandingPage from './components/LandingPage/LandingPage';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './components/Scoreboard/Scoreboard.css';
 
 const App = () => {
   return (
     <div id="container">
-      <LandingPage />
-      <Scoreboard />
-      <GetTriviaStuff />
-      <AddPlayerForm />
+      <Router>
+        <Switch>
+          <Route exact path='/' component={LandingPage}/>
+          <Route path='/select' component={GetTriviaStuff}/>
+          <Route path='/scoreboard' component={Scoreboard} />
+        </Switch>
+      </Router>
 
-      <Timer />
+      {/* <AddPlayerForm />
+
+      <Timer /> */}
     </div>
   );
 };

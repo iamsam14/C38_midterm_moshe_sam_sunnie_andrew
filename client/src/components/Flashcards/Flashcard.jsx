@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
-import './Flashcard.css';
+// import './Flashcard.css';
 
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
@@ -19,7 +19,7 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
       // Add second counter to seconds accumulator
     }
   };
-
+  console.log(flashcard);
   return (
     <Card bg="info" text="white" className="flashcard">
       {flipped ? (
@@ -29,9 +29,10 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
             size="xxl"
             block
             variant="info"
+            text="white"
             onClick={() => handleNextCard(isCorrect)}
           >
-            Next Question!
+            {flashcard.next === null ? 'See your score!!' : 'Next Question'}
           </Button>
         </Card.Body>
       ) : (
@@ -41,13 +42,12 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
             {flashcard.options.map((answer) => {
               return (
                 <ListGroupItem
+                  key={(flashcard.id += 1)}
                   variant="info"
                   className="flashcard-answer"
                   onClick={() => handleRevealAnswer(answer)}
                 >
-                  <Button variant="info" block>
-                    {answer}
-                  </Button>
+                  <Button variant="info" text="white" block></Button>
                 </ListGroupItem>
               );
             })}

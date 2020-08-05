@@ -1,4 +1,4 @@
-import React, { useState } from './node_modules/react';
+import React, { useState } from 'react';
 import NewPlayer from './NewPlayer';
 //import uuid from 'uuid';
 
@@ -28,13 +28,3 @@ const AddPlayerForm = () => {
 };
 
 export default AddPlayerForm;
-
-// handleChange = (e) => {
-//   this.setState({
-//     [e.target.id]: e.target.value
-//   });
-// };
-
-// handleSubmit = (e) => {
-//   e.preventDefault();
-// };

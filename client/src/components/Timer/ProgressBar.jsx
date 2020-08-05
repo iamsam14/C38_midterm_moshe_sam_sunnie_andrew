@@ -1,10 +1,5 @@
 import React, { useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-
-// Handle questions and answers to stop reset timer.....
-// onClick={() => handleNextCard(isCorrect)}
-// onClick={() => handleRevealAnswer(answer)}
 
 const ProgressBar = () => {
   const RenderTime = ({ remainingTime }) => {

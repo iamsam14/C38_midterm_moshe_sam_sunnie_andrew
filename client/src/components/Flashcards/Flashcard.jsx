@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import ProgressBar from '../Timer/ProgressBar';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 // import './Flashcard.css';
 
@@ -13,15 +12,14 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
 
   const handleRevealAnswer = (answer) => {
     // Stop the timer and store the remaining second value
-    // console.log(currentTime);
     if (!flipped) {
       setFlipped(true);
     }
     const isAnswerCorrect = answer === flashcard.answer;
     setIsCorrect(isAnswerCorrect);
-    if (isCorrect) {
-      // Add second counter to seconds accumulator
-    }
+    // if (isCorrect) {
+    //   // Add second counter to seconds accumulator
+    // }
   };
   console.log(flashcard);
   return (

@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Scoreboard from './components/Scoreboard/Scoreboard';
-import Timer from './components/Timer/Timer';
-import AddPlayerForm from './components/NewPlayer/AddPlayerForm';
-import GetTriviaStuff from './components/GetTriviaStuff/GetTriviaStuff';
+import GetTrivia from './components/GetTrivia/GetTrivia';
 import LandingPage from './components/LandingPage/LandingPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './components/Scoreboard/Scoreboard.css';
@@ -12,15 +10,11 @@ const App = () => {
     <div id="container">
       <Router>
         <Switch>
-          <Route exact path='/' component={LandingPage}/>
-          <Route path='/select' component={GetTriviaStuff}/>
-          <Route path='/scoreboard' component={Scoreboard} />
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/select" component={GetTrivia} />
+          <Route path="/scoreboard/:score" component={Scoreboard} />
         </Switch>
       </Router>
-
-      {/* <AddPlayerForm />
-
-      <Timer /> */}
     </div>
   );
 };

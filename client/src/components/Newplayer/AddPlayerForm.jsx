@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from './node_modules/react';
 import NewPlayer from './NewPlayer';
 //import uuid from 'uuid';
 

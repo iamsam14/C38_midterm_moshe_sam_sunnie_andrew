@@ -23,6 +23,7 @@ const GetTriviaStuff = () => {
     }
     if (currentCard.next) {
       setCurrentCard(cardMap[currentCard.next]);
+      // reset and start the timer
     } else {
       console.log('i am at the last question do something to me');
       // do something for the final card

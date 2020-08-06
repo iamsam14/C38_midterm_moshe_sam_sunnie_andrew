@@ -6,7 +6,7 @@ import ChooseDifficulty from '../QuestionSelectors/ChooseDifficulty';
 import AmountOfQuestions from '../QuestionSelectors/AmountOfQuestions';
 import { useHistory } from 'react-router-dom';
 
-const GetTrivia = ({ remainingTime }) => {
+const GetTrivia = () => {
   const [cardMap, setCardMap] = useState({});
   const [currentCard, setCurrentCard] = useState(null);
   const [amount, setAmount] = useState(10);
@@ -15,9 +15,12 @@ const GetTrivia = ({ remainingTime }) => {
   const [category, setCategory] = useState('');
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
+  const [totalTimeRemaining, setTotalTimeRemaining] = useState(0);
   let history = useHistory();
 
-  const handleNextCard = (isCorrect) => {
+  const handleNextCard = (isCorrect, remainingTimeForQuestion) => {
+    // accumulate remaining time
+    setTotalTimeRemaining(totalTimeRemaining + remainingTimeForQuestion);
     if (isCorrect) {
       setCorrectAnswerCount(correctAnswerCount + 1);
     }
@@ -116,7 +119,6 @@ const GetTrivia = ({ remainingTime }) => {
         <div className="card-stack">
           {currentCard && (
             <Flashcard
-              remainingTime={remainingTime}
               key={currentCard.id}
               flashcard={currentCard}
               handleNextCard={handleNextCard}

@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 
-const RenderTime = ({ remainingTime }) => {
+const RenderTime = ({ remainingTime, setCallback }) => {
   let currentTime = useRef(remainingTime);
   const prevTime = useRef(null);
   const isNewTimeFirstTick = useRef(false);
-  const [oneLastRerender, setOneLastRerender] = useState(0);
 
   if (currentTime.current !== remainingTime) {
     isNewTimeFirstTick.current = true;
@@ -14,15 +13,11 @@ const RenderTime = ({ remainingTime }) => {
     isNewTimeFirstTick.current = false;
   }
 
-  // force one last re-render when the time is over to trigger the last animation
-  if (remainingTime === 0) {
-    setTimeout(() => {
-      setOneLastRerender((val) => val + 1);
-    }, 20);
-  }
+  useEffect(() => {
+    setCallback(() => remainingTime);
+  }, [remainingTime]);
 
   const isTimeUp = isNewTimeFirstTick.current;
-  console.log(remainingTime);
   return (
     <div className="time-wrapper">
       <div key={remainingTime} className={`time ${isTimeUp ? 'up' : ''}`}>

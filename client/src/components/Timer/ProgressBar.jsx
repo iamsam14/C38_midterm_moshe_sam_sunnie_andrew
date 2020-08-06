@@ -2,7 +2,7 @@ import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import RenderTime from './RenderTime';
 
-const ProgressBar = ({ remainingTime }) => {
+const ProgressBar = ({ setCallback }) => {
   return (
     <div className="App">
       <h1>
@@ -15,7 +15,7 @@ const ProgressBar = ({ remainingTime }) => {
           duration={12}
           colors={[['#007AF3', 0.5], ['#00D324', 0.3], ['#BB1800']]}
         >
-          <RenderTime remainingTime={remainingTime} />
+          <RenderTime setCallback={setCallback} />
         </CountdownCircleTimer>
       </div>
     </div>

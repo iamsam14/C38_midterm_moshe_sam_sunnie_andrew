@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "aos": "^2.3.4",
     "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
     "express": "^4.17.1",
@@ -12,7 +13,8 @@
     "react-countdown-circle-timer": "^2.3.7",
     "react-router-dom": "^5.2.0",
     "react-spring": "^8.0.27",
-    "react-stopwatch": "^2.0.4"
+    "react-stopwatch": "^2.0.4",
+    "windups": "^1.0.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

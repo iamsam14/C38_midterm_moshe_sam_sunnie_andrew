@@ -21,7 +21,7 @@ const RenderTime = ({ remainingTime, setCallback }) => {
   return (
     <div className="time-wrapper">
       <div key={remainingTime} className={`time ${isTimeUp ? 'up' : ''}`}>
-        {remainingTime}
+        {/* {remainingTime} */}
       </div>
     </div>
   );

@@ -1,9 +1,11 @@
 import React from 'react';
+import '../../App.css';
+
 import './Scoreboard.css';
 const Scoreboard = ({ match }) => {
   const { score } = match.params;
   return (
-    <div>
+    <div className="page-container">
       <div id="top-scoreboard">
         <h1>Your Trivia Jedi Masters: </h1>
         <div className="top-five">

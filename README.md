@@ -24,6 +24,10 @@ yarn add react-countdown-circle-timer
 
 yarn add boostrap react-bootstrap
 
+yarn add aos
+
+yarn add windups
+
 ### Ready to play?
 
 Thank you so much for choosing to play Infinite Fortress Trivia

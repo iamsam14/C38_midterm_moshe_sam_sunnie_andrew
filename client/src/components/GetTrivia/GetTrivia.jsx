@@ -33,7 +33,7 @@ const GetTrivia = () => {
         if (difficulty === 'hard') diffCoefficient = 2;
         if (difficulty === 'medium') diffCoefficient = 1.2;
         const score = Math.round(
-          152.75 * diffCoefficient * correctAnswerCount * 40
+          152.75 * diffCoefficient * correctAnswerCount * totalTimeRemaining
         );
         console.log('the score is', score);
         return score;

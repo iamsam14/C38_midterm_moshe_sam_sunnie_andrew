@@ -8,7 +8,7 @@ const Scoreboard = ({ match }) => {
         <h1>Your Trivia Jedi Masters: </h1>
         <div className="top-five">
           <div className="box">
-            <p>Ernie</p>
+            <p>Ernie</p>&#127942;
             <br></br>
             <p>Score: 1,000,000</p>
           </div>
@@ -28,7 +28,7 @@ const Scoreboard = ({ match }) => {
             <p>Score: 600,000</p>
           </div>
           <div className="box">
-            <p>NewPlayer</p>
+            <p>Player</p>
             <br></br>
             <p>Score: {score}</p>
           </div>

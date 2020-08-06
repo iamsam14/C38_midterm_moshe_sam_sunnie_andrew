@@ -1,0 +1,22 @@
+#landingPage {
+  text-align: center;
+  background-repeat: repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#landingPage-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 4px 4px red;
+  color: azure;
+  margin: auto;
+}
+
+#landingPage h1 {
+  font-size: 100px;
+}

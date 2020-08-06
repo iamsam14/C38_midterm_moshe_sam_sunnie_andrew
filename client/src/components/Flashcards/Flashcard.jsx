@@ -39,7 +39,7 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
   };
 
   return (
-    <>
+    <div style={{ display: 'flex', alignContent: 'space-around' }}>
       <Card
         style={{ height: '100%' }}
         bg="info"
@@ -89,7 +89,7 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
         )}
       </Card>
       {!flipped && <ProgressBar setCallback={setGetTimeCallback} />}
-    </>
+    </div>
   );
 };
 

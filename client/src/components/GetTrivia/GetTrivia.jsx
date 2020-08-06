@@ -5,6 +5,7 @@ import ChooseCategory from '../QuestionSelectors/ChooseCategory';
 import ChooseDifficulty from '../QuestionSelectors/ChooseDifficulty';
 import AmountOfQuestions from '../QuestionSelectors/AmountOfQuestions';
 import { useHistory } from 'react-router-dom';
+import '../../App.css';
 
 const GetTrivia = () => {
   const [cardMap, setCardMap] = useState({});
@@ -92,7 +93,7 @@ const GetTrivia = () => {
   };
 
   return (
-    <>
+    <div className="page-container">
       {!isClicked ? (
         <div className="getridofme">
           <form className="header" onSubmit={handleSubmit}>
@@ -111,7 +112,7 @@ const GetTrivia = () => {
         </div>
       ) : null}
       <div className="container">
-        <div className="card-stack">
+        <div className="card-stack" style={{ display: 'flex' }}>
           {currentCard && (
             <Flashcard
               key={currentCard.id}
@@ -121,7 +122,7 @@ const GetTrivia = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

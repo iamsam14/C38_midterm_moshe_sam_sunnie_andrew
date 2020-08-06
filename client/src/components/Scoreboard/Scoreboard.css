@@ -1,20 +1,38 @@
 #top-scoreboard {
-  background: rgb(10, 85, 110);
+  background-color: whitesmoke;
   margin: 70px auto;
   box-shadow: 0 7px 0px #333;
   border-radius: 15px;
   display: flex;
   padding: 1rem;
-  color: yellow;
+  color: black;
   flex-direction: column;
-
+  border: 5px double goldenrod;
   max-width: 80%;
   padding-bottom: 0.85em;
 }
-
 #container {
-  background-color: lightgrey;
   display: flex;
   flex-direction: column;
   margin: auto;
+  background-color: lightgray;
+}
+.box {
+  text-align: center;
+  margin: 20px;
+  background-color: lightblue;
+  border-radius: 10px;
+  padding: 20px;
+  border: solid 2px black;
+  font-weight: bold;
+}
+.top-five {
+  display: flex;
+  justify-content: center;
+}
+.box p {
+  display: inline;
+}
+#container span {
+  color: black;
 }

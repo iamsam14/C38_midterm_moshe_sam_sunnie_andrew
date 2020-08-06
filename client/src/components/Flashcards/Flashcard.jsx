@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import ProgressBar from '../Timer/ProgressBar';
 
-// import './Flashcard.css';
+import './Flashcard.css';
 
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
@@ -15,33 +15,23 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
   });
 
   const handleRevealAnswer = (answer) => {
-    // Stop the timer and store the remaining second value
-    // process.kill(remainingTime);
     if (!flipped) {
       setFlipped(true);
     }
-    // call the remainingTimeCallback to set remainingTime in local stat
+
     setRemainingTime(progressBarCallback.fn());
     const isAnswerCorrect = answer === flashcard.answer;
     setIsCorrect(isAnswerCorrect);
-    // if (isCorrect) {
-    //   // Add second counter to seconds accumulator
-    // }
   };
 
   const onNextCardClick = () => {
-    // pass remainingTime to parent component to be accumulated
     handleNextCard(isCorrect, remainingTime);
   };
 
-  // sets the getRemainingTime fn that is defined
-  // inside progressBar to localState
   const setGetTimeCallback = (cb) => {
     setProgressBarCallback({ fn: cb });
 
     const result = cb();
-    // if there is no more time left, we should flip the card
-    // and mark the answer as incorrect
     if (result === 0) {
       setFlipped(true);
       setIsCorrect(false);
@@ -50,9 +40,17 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
 
   return (
     <>
-      <Card bg="info" text="white" className="flashcard">
+      <Card
+        style={{ height: '100%' }}
+        bg="info"
+        text="white"
+        className="flashcard"
+      >
         {flipped ? (
-          <Card.Body className="flashcard-back">
+          <Card.Body
+            // {isflipped ? : style={{transform: rotateY(var(--rotate))}}}
+            className="flashcard-back"
+          >
             <Card.Title>This is the answer {flashcard.answer}</Card.Title>
             <Button
               size="xxl"
@@ -65,7 +63,10 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
             </Button>
           </Card.Body>
         ) : (
-          <Card.Body className="flashcard-front">
+          <Card.Body
+            // {isflipped ? : style={{}}}
+            className="flashcard-front"
+          >
             <Card.Text>{flashcard.question}</Card.Text>
             <ListGroup className="flashcard-answers">
               {flashcard.options.map((answer) => {
@@ -73,10 +74,13 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
                   <ListGroupItem
                     key={(flashcard.id += 1)}
                     variant="info"
+                    text="black"
                     className="flashcard-answer"
                     onClick={() => handleRevealAnswer(answer)}
                   >
-                    <Button variant="info" text="white" block></Button>
+                    <Button variant="info" block>
+                      {answer}
+                    </Button>
                   </ListGroupItem>
                 );
               })}

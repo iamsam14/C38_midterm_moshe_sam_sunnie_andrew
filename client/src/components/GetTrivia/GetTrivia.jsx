@@ -19,7 +19,6 @@ const GetTrivia = () => {
   let history = useHistory();
 
   const handleNextCard = (isCorrect, remainingTimeForQuestion) => {
-    // accumulate remaining time
     setTotalTimeRemaining(totalTimeRemaining + remainingTimeForQuestion);
     if (isCorrect) {
       setCorrectAnswerCount(correctAnswerCount + 1);
@@ -73,9 +72,6 @@ const GetTrivia = () => {
           };
         });
 
-        /**
-         * PAGINATION
-         */
         const parsedCards = cards.reduce((acc, card, index) => {
           isLastCard = index === cards.length - 1;
           const next = isLastCard ? null : cards[index + 1].id;
@@ -105,7 +101,6 @@ const GetTrivia = () => {
               setCategories={setCategories}
               setCategory={setCategory}
             />
-            console.log(remainingTime)
             <ChooseDifficulty
               difficulty={difficulty}
               setDifficulty={setDifficulty}

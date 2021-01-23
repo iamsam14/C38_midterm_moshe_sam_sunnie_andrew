@@ -1,25 +1,20 @@
-/* JUST FOR DEMO PURPORSES, REPLACE WITH YOUR OWN CODE */
-
-/* #demo {
+#demo {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
-} */
-
-/* h1 {
+}
+h1 {
   display: inline-block;
   margin: 0 0.5rem;
-
   animation: bounce;
   animation-duration: 2s;
-} */
+}
 
 .page-container {
   background-image: url(./components/LandingPage/InfinitySymbol.jpg);
   height: 100vh;
-
   background-repeat: no-repeat;
   color: whitesmoke;
   background-size: cover;

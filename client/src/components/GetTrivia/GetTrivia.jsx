@@ -5,7 +5,7 @@ import ChooseCategory from '../QuestionSelectors/ChooseCategory';
 import ChooseDifficulty from '../QuestionSelectors/ChooseDifficulty';
 import AmountOfQuestions from '../QuestionSelectors/AmountOfQuestions';
 import { useHistory } from 'react-router-dom';
-import '../../App.css';
+import './GetTrivia.css';
 
 const GetTrivia = () => {
   const [cardMap, setCardMap] = useState({});
@@ -95,7 +95,7 @@ const GetTrivia = () => {
   return (
     <div className="page-container">
       {!isClicked ? (
-        <div className="getridofme">
+        <div className="settings-box">
           <form className="header" onSubmit={handleSubmit}>
             <ChooseCategory
               categories={categories}

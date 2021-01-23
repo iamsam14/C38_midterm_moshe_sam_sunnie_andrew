@@ -15,7 +15,7 @@ const Scoreboard = ({ match }) => {
             <p>Score: 1,000,000</p>
           </div>
           <div className="box">
-            <p>SamtheMan</p>
+            <p>Rudolph</p>
             <br></br>
             <p>Score: 800,000</p>
           </div>

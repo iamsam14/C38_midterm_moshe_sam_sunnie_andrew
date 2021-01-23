@@ -1,0 +1,11 @@
+.settings-box {
+  display: flex;
+  min-height: 100vh;
+}
+
+.header {
+  margin: auto;
+  background-color: azure;
+  padding: 40px;
+  color: black;
+}

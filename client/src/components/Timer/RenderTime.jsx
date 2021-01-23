@@ -15,14 +15,12 @@ const RenderTime = ({ remainingTime, setCallback }) => {
 
   useEffect(() => {
     setCallback(() => remainingTime);
-  }, [remainingTime]);
+  }, []);
 
   const isTimeUp = isNewTimeFirstTick.current;
   return (
     <div className="time-wrapper">
-      <div key={remainingTime} className={`time ${isTimeUp ? 'up' : ''}`}>
-        {/* {remainingTime} */}
-      </div>
+      <div key={remainingTime} className={`time ${isTimeUp ? 'up' : ''}`}></div>
     </div>
   );
 };

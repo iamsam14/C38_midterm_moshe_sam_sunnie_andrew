@@ -39,57 +39,53 @@ const Flashcard = ({ flashcard, handleNextCard }) => {
   };
 
   return (
-    <div style={{ display: 'flex', alignContent: 'space-around' }}>
-      <Card
-        style={{ height: '100%' }}
-        bg="info"
-        text="white"
-        className="flashcard"
-      >
-        {flipped ? (
-          <Card.Body
-            // {isflipped ? : style={{transform: rotateY(var(--rotate))}}}
-            className="flashcard-back"
-          >
-            <Card.Title>This is the answer {flashcard.answer}</Card.Title>
-            <Button
-              size="xxl"
-              block
-              variant="info"
-              text="white"
-              onClick={onNextCardClick}
+    <>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Card bg="info" text="white" className="flashcard">
+          {flipped ? (
+            <Card.Body className="flashcard-back">
+              <Card.Title>This is the answer {flashcard.answer}</Card.Title>
+              <Button
+                size="xxl"
+                block
+                variant="info"
+                text="white"
+                onClick={onNextCardClick}
+              >
+                {flashcard.next === null ? 'See your score!!' : 'Next Question'}
+              </Button>
+            </Card.Body>
+          ) : (
+            <Card.Body
+              // {isflipped ? : style={{}}}
+              className="flashcard-front"
             >
-              {flashcard.next === null ? 'See your score!!' : 'Next Question'}
-            </Button>
-          </Card.Body>
-        ) : (
-          <Card.Body
-            // {isflipped ? : style={{}}}
-            className="flashcard-front"
-          >
-            <Card.Text>{flashcard.question}</Card.Text>
-            <ListGroup className="flashcard-answers">
-              {flashcard.options.map((answer) => {
-                return (
-                  <ListGroupItem
-                    key={(flashcard.id += 1)}
-                    variant="info"
-                    text="black"
-                    className="flashcard-answer"
-                    onClick={() => handleRevealAnswer(answer)}
-                  >
-                    <Button variant="info" block>
-                      {answer}
-                    </Button>
-                  </ListGroupItem>
-                );
-              })}
-            </ListGroup>
-          </Card.Body>
-        )}
-      </Card>
-      {!flipped && <ProgressBar setCallback={setGetTimeCallback} />}
-    </div>
+              <Card.Text>{flashcard.question}</Card.Text>
+              <ListGroup className="flashcard-answers">
+                {flashcard.options.map((answer) => {
+                  return (
+                    <ListGroupItem
+                      key={(flashcard.id += 1)}
+                      variant="info"
+                      text="black"
+                      className="flashcard-answer"
+                      onClick={() => handleRevealAnswer(answer)}
+                    >
+                      <Button variant="info" block>
+                        {answer}
+                      </Button>
+                    </ListGroupItem>
+                  );
+                })}
+              </ListGroup>
+            </Card.Body>
+          )}
+        </Card>
+        <div>
+          {!flipped && <ProgressBar setCallback={setGetTimeCallback} />}
+        </div>
+      </div>
+    </>
   );
 };
 

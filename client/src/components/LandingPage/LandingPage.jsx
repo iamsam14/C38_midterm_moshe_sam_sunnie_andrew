@@ -1,5 +1,4 @@
 import React from 'react';
-//import 'animate.css';
 import './landingPage.css';
 import backgroundImg from './InfinitySymbol.jpg';
 import AOS from 'aos';
@@ -9,7 +8,7 @@ import { useWindupString } from 'windups';
 const LandingPage = () => {
   AOS.init();
   const [instructions] = useWindupString(
-    "We all love a good game of trivia so here at Wyncode we've decided to make exactly that using our trivia API. Representing group 7 are Sunnie, Moshe, Andrew, and Sam "
+    "We all love a good game of trivia so here at Wyncode we've decided to make exactly that using our trivia API. Representing group 7 are Moshe, Andrew, and Sam"
   );
 
   const [playgame] = useWindupString(
@@ -19,22 +18,15 @@ const LandingPage = () => {
     <div
       id="landingPage"
       style={{
-        backgroundImage: `url(${backgroundImg})`
+        backgroundImage: `url(${backgroundImg})`,
+        backgroundSize: '100% 100%'
       }}
     >
       <div id="landingPage-title">
-        <h1
-          data-aos="fade-right"
-          data-aos-duration="3000"
-          // className="animate__animated  animate__lightSpeedInLeft"
-        >
+        <h1 data-aos="fade-right" data-aos-duration="3000">
           Infinite Fortress
         </h1>
-        <h1
-          // className="animate__ animated animate__lightSpeedInRight"
-          data-aos="fade-left"
-          data-aos-duration="3000"
-        >
+        <h1 data-aos="fade-left" data-aos-duration="3000">
           Trivia
         </h1>
       </div>
@@ -46,9 +38,5 @@ const LandingPage = () => {
     </div>
   );
 };
-
-// const backgroundPic = () => {
-//   return <div style={{ backgroundImage: `url(${})` }} />;
-// };
 
 export default LandingPage;

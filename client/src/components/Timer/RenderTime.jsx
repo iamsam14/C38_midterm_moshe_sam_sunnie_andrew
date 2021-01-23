@@ -15,7 +15,7 @@ const RenderTime = ({ remainingTime, setCallback }) => {
 
   useEffect(() => {
     setCallback(() => remainingTime);
-  }, []);
+  }, [remainingTime]);
 
   const isTimeUp = isNewTimeFirstTick.current;
   return (
